@@ -8,7 +8,7 @@ cask "battery-widget" do
   homepage "https://github.com/AnnupKapur/battery-widget"
 
   depends_on arch: :arm64
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "BatteryWidget.app"
 
