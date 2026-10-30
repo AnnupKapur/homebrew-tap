@@ -1,35 +1,43 @@
 # homebrew-tap
 
-A personal [Homebrew](https://brew.sh) tap. First cask: [Claude Widget](https://github.com/AnnupKapur/claude-taskbar-widget) — a macOS menu bar app that shows live Claude plan usage.
+A personal [Homebrew](https://brew.sh) tap for macOS menu bar apps.
+
+| Cask | App |
+| --- | --- |
+| `claude-widget` | [Claude Widget](https://github.com/AnnupKapur/claude-taskbar-widget): live Claude plan usage |
+| `battery-widget` | [Battery Widget](https://github.com/AnnupKapur/battery-widget): battery percentage, time remaining, and stats |
 
 ## Install
 
-```bash
+```sh
 brew install --cask annupkapur/tap/claude-widget
+brew install --cask annupkapur/tap/battery-widget
 ```
 
-> The first invocation auto-taps this repo. Subsequent installs and `brew upgrade` work without the tap prefix.
+Each app installs independently. Battery Widget requires Apple Silicon and macOS
+14 (Sonoma) or later.
 
 ## Update
 
-```bash
-brew upgrade --cask claude-widget
+```sh
+brew upgrade --cask annupkapur/tap/claude-widget
+brew upgrade --cask annupkapur/tap/battery-widget
 ```
 
 ## Uninstall
 
-```bash
-brew uninstall --cask claude-widget
+```sh
+brew uninstall --cask annupkapur/tap/claude-widget
+brew uninstall --cask annupkapur/tap/battery-widget
 ```
 
-To also remove preferences, cached webview cookies, etc.:
-
-```bash
-brew uninstall --cask --zap claude-widget
-```
+To also remove an app's preferences and caches, add `--zap` to its uninstall command.
 
 ## Notes
 
-The app is ad-hoc signed (not Developer ID signed/notarized). Homebrew strips the Gatekeeper quarantine attribute on cask install, so it launches without warnings — but macOS may still flag it the first time you open Settings → Privacy & Security. This is normal for ad-hoc signed apps.
+These apps are ad-hoc signed and are not Developer ID signed or notarized by
+Apple. macOS may require first-launch approval in System Settings → Privacy &
+Security. See each project's README for details and manual installation.
 
-For the manual install path (without Homebrew), see the [project README](https://github.com/AnnupKapur/claude-taskbar-widget).
+Battery Widget requests administrator approval when changing Low Power Mode.
+It does not install a privileged background helper.
